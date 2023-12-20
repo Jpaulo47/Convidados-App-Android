@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/text_name"
+            android:id="@+id/edit_name"
             style="@style/MyEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,14 +45,14 @@
         app:layout_constraintTop_toBottomOf="@id/text_input_layout_nome">
 
         <RadioButton
-            android:id="@+id/radio_presente"
+            android:id="@+id/radio_present"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/presente" />
 
         <RadioButton
-            android:id="@+id/radio_ausente"
+            android:id="@+id/radio_absent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ausente" />
