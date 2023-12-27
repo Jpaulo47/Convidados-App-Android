@@ -14,7 +14,6 @@ import com.example.convidados.view.adapter.GuestsAdapter
 import com.example.convidados.view.listener.OnGuestListener
 import com.example.convidados.viewmodel.GuestsViewModel
 
-@Suppress("NAME_SHADOWING")
 class PresentFragment : Fragment() {
 
     private var _binding: FragmentPresentBinding? = null
@@ -30,6 +29,13 @@ class PresentFragment : Fragment() {
         binding.rvGuests.layoutManager = LinearLayoutManager(context)
         binding.rvGuests.adapter = adapter
 
+        listener()
+        observe()
+
+        return binding.root
+    }
+
+    private fun listener(){
         val listener = object : OnGuestListener {
             override fun onClick(id: Int) {
                 val intent = Intent(context, GuestFormActivity::class.java)
@@ -47,10 +53,6 @@ class PresentFragment : Fragment() {
         }
 
         adapter.attachListener(listener)
-
-        observe()
-
-        return binding.root
     }
 
     override fun onResume() {
