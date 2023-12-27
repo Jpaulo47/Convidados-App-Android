@@ -11,21 +11,13 @@ class GuestFormViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val apllication = application
 
-    private val repository  = GuestRepository.getInstance(application)
+    private val repository  = GuestRepository(application)
 
     private val guestModel = MutableLiveData<GuestModel>()
     val guest: MutableLiveData<GuestModel> = guestModel
 
     private val _saveGuest = MutableLiveData<String>()
     val saveGuest: MutableLiveData<String> = _saveGuest
-
-    fun insert(guestModel: GuestModel) {
-        repository.insert(guestModel)
-    }
-
-    fun update(guestModel: GuestModel) {
-        repository.update(guestModel)
-    }
 
     fun get(id: Int) {
         guestModel.value = repository.get(id)

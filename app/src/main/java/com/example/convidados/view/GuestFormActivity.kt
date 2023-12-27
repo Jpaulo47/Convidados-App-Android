@@ -50,14 +50,21 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (v.id == R.id.button_save) {
+
             if (binding.editName.text.isEmpty()) {
                 binding.editName.error = getString(R.string.error_name)
                 return
             }
+
             val name = binding.editName.text.toString()
             val presence = binding.radioPresent.isChecked
 
-            val model = GuestModel(guestId, name, presence)
+            val model = GuestModel().apply {
+                id = guestId
+                this.name = name
+                this.presence = presence
+            }
+
             viewModel.save(model)
             finish()
         }

@@ -14,6 +14,7 @@ import com.example.convidados.view.adapter.GuestsAdapter
 import com.example.convidados.view.listener.OnGuestListener
 import com.example.convidados.viewmodel.GuestsViewModel
 
+@Suppress("NAME_SHADOWING")
 class AbsentFragment : Fragment() {
 
     private var _binding: FragmentAbsentBinding? = null
@@ -41,7 +42,7 @@ class AbsentFragment : Fragment() {
 
             override fun onDelete(id: Int) {
                 viewModel.delete(id)
-                viewModel.getPresents(false)
+                viewModel.getAbsents()
             }
         }
 
@@ -55,7 +56,7 @@ class AbsentFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getPresents(false)
+        viewModel.getAbsents()
     }
 
     override fun onDestroyView() {
