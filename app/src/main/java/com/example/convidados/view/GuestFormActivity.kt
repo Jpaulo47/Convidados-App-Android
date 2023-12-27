@@ -3,6 +3,7 @@ package com.example.convidados.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.convidados.viewmodel.GuestFormViewModel
 import com.example.convidados.R
@@ -38,14 +39,32 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
                 binding.radioAbsent.isChecked = true
             }
         }
+
+        viewModel.saveGuest.observe(this) {
+            if (!it.equals(getString(R.string.error))) {
+                Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
     }
 
     override fun onClick(v: View) {
         if (v.id == R.id.button_save) {
+
+            if (binding.editName.text.isEmpty()) {
+                binding.editName.error = getString(R.string.error_name)
+                return
+            }
+
             val name = binding.editName.text.toString()
             val presence = binding.radioPresent.isChecked
 
-            val model = GuestModel(guestId, name, presence)
+            val model = GuestModel().apply {
+                id = guestId
+                this.name = name
+                this.presence = presence
+            }
+
             viewModel.save(model)
             finish()
         }

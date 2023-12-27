@@ -14,4 +14,11 @@
     <string name="presente">Presente</string>
     <string name="ausente">Ausente</string>
     <string name="salvar">salvar</string>
+    <string name="cancelar">cancelar</string>
+    <string name="insert_sucess">Convidado criado com sucesso</string>
+    <string name="update_sucess">Convidado atualizado com sucesso</string>
+    <string name="delete_sucess">Convidado removido com sucesso</string>
+    <string name="delete_error">Erro ao remover convidado</string>
+    <string name="error">Erro</string>
+    <string name="error_name">Preencha o campo</string>
 </resources>
